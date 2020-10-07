@@ -3,13 +3,42 @@
 <head>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
+
 <body>
-<!-- GOOGLE PLUS SIGN IN BUTTON-->
+  <!-- GOOGLE PLUS SIGN IN BUTTON-->
+  <div id="signinButton">
+    <meta name="google-signin-client_id" content="209461865213-ok58oafi0r01lf39revi7vbi474mpcer.apps.googleusercontent.com">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
+  <!--END GOOGLE PLUS SIGN IN BUTTON -->
 
-<meta name="google-signin-client_id" content="209461865213-ok58oafi0r01lf39revi7vbi474mpcer.apps.googleusercontent.com">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <div id="result"></div>
 
-<!--END GOOGLE PLUS SIGN IN BUTTON -->
+  <script>
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+        // Hide the button
+        $('#signinButton').attr('style', 'display: none');
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          processData: false,
+          contentType: 'application/octet-stream; charset=utf-8',
+          data: authResult['code'],
+          success: function(result) {
+            if (result) {
+              $('#result').html('Login Successful!<br>' + result + '</br>Redirection...')
+              setTimeout(function() {
+                window.location.href = "/restaurant";
+              }, 4000);
+            } else if (authResult['error']) {
+              console.log('Thre was an error: ' + authResult['error']);
+            }
+          }
+        })
+      }
+    }
+  </script>
+</body>
 
-  </body>
-  </html>
+</html>
