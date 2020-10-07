@@ -2,27 +2,27 @@
 <html>
 <head>
 
-<!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
- </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
- <script src="//apis.google.com/js/platform.js?onload=start"> </script>
 
-<!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
 
 </head>
 <body>
-  <div id="signinButton">
-          <span class="g-signin"
-            data-scope="openid email"
-            data-clientid="209461865213-ok58oafi0r01lf39revi7vbi474mpcer.apps.googleusercontent.com"
-            data-redirecturi="postmessage"
-            data-accesstype="offline"
-            data-cookiepolicy="single_host_origin"
-            data-callback="signInCallback"
-            data-approvalprompt="force">
-          </span>
-        </div>
 
-</body>
-</html>
+
+<!-- GOOGLE PLUS SIGN IN BUTTON-->
+
+<meta name="google-signin-client_id" content="209461865213-ok58oafi0r01lf39revi7vbi474mpcer.apps.googleusercontent.com">
+
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+
+
+
+
+<!--END GOOGLE PLUS SIGN IN BUTTON -->
+
+  </body>
+
+  </html>
