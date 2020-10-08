@@ -33,6 +33,9 @@
               }, 4000);
             } else if (authResult['error']) {
               console.log('Thre was an error: ' + authResult['error']);
+            } else {
+              $('#result').html('Failed to make a server-side call.
+              Check your configuration and console.');
             }
           }
         })
